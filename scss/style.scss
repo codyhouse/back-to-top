@@ -124,7 +124,15 @@ main {
 	visibility: hidden;
 	opacity: 0;
 
-	@include transition(all .3s);
+	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+	-moz-transition: opacity .3s 0s, visibility 0s .3s;
+	transition: opacity .3s 0s, visibility 0s .3s;
+
+	&.cd-is-visible, &.cd-fade-out, .no-touch &:hover {
+		-webkit-transition: opacity .3s 0s, visibility 0s 0s;
+		-moz-transition: opacity .3s 0s, visibility 0s 0s;
+		transition: opacity .3s 0s, visibility 0s 0s;
+	}
 
 	&.cd-is-visible { /* the button becomes visible */
 		visibility: visible;
