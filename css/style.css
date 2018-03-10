@@ -31,7 +31,7 @@ Resource style
 -------------------------------- */
 header {
   background: #5c4751;
-  height: 100px;
+  height: 150px;
   text-align: center;
 }
 
@@ -40,7 +40,7 @@ header h1 {
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
-  padding-top: 1.6em;
+  padding-top: 3em;
   margin-bottom: .2em;
 }
 
@@ -55,7 +55,6 @@ header p {
   }
   header h1 {
     font-size: 3rem;
-    padding-top: 2.6em;
   }
 }
 
