@@ -3,19 +3,17 @@
 Primary style
 
 -------------------------------- */
-html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+html {
+  font-size: 62.5%;
 }
 
 body {
-  font-size: 100%;
+  font-size: 1.6rem;
   font-family: "Bitter", sans-serif;
   color: #f5f4ed;
   background-color: #795d6b;
@@ -28,24 +26,7 @@ a {
 
 /* -------------------------------- 
 
-Modules - reusable parts of our design
-
--------------------------------- */
-.cd-container {
-  width: 90%;
-  max-width: 768px;
-  margin: 2em auto;
-}
-.cd-container::after {
-  /* clearfix */
-  content: '';
-  display: table;
-  clear: both;
-}
-
-/* -------------------------------- 
-
-Main components 
+Resource style 
 
 -------------------------------- */
 header {
@@ -53,42 +34,47 @@ header {
   height: 100px;
   text-align: center;
 }
+
 header h1 {
-  font-size: 20px;
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
-  font-weight: bold;
   padding-top: 1.6em;
   margin-bottom: .2em;
 }
+
 header p {
-  font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 1.3rem;
   color: #957484;
 }
+
 @media only screen and (min-width: 1024px) {
   header {
     height: 200px;
   }
   header h1 {
-    font-size: 30px;
-    font-size: 1.875rem;
+    font-size: 3rem;
     padding-top: 2.6em;
   }
 }
 
+main {
+  width: 90%;
+  max-width: 768px;
+  margin: 2em auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 main p {
-  font-size: 16px;
-  font-size: 1rem;
   line-height: 1.6;
   margin: 2em 0;
 }
+
 @media only screen and (min-width: 1024px) {
   main p {
-    font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
 }
 
@@ -99,7 +85,8 @@ main p {
   position: fixed;
   bottom: 40px;
   right: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   /* image replacement properties */
   overflow: hidden;
   text-indent: 100%;
@@ -107,34 +94,40 @@ main p {
   background: rgba(232, 98, 86, 0.8) url(../img/cd-top-arrow.svg) no-repeat center 50%;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
-  -moz-transition: opacity .3s 0s, visibility 0s .3s;
-  transition: opacity .3s 0s, visibility 0s .3s;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+  transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
 }
-.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
-  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-  -moz-transition: opacity .3s 0s, visibility 0s 0s;
-  transition: opacity .3s 0s, visibility 0s 0s;
+
+.cd-top.cd-top--show,
+.cd-top.cd-top--fade-out,
+.cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
 }
-.cd-top.cd-is-visible {
+
+.cd-top.cd-top--show {
   /* the button becomes visible */
   visibility: visible;
   opacity: 1;
 }
-.cd-top.cd-fade-out {
+
+.cd-top.cd-top--fade-out {
   /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
   opacity: .5;
 }
-.no-touch .cd-top:hover {
+
+.cd-top:hover {
   background-color: #e86256;
   opacity: 1;
 }
+
 @media only screen and (min-width: 768px) {
   .cd-top {
     right: 20px;
     bottom: 20px;
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .cd-top {
     height: 60px;
