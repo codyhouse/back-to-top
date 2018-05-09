@@ -1,34 +1,103 @@
-/* demo style */
-
-.cd-nugget-info {
-  text-align: center;
-  position: absolute;
-  width: 100%;
+.back-to-top {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  bottom: 40px;
+  display: flex;
   height: 50px;
-  line-height: 50px;
-  top: 0;
-  left: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  justify-content: space-between;
+  opacity: 0;
+  padding: 0 24px 0 20px;
+  position: fixed;
+  right: 10px;
+  text-decoration: none;
+  transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+  visibility: hidden;
+  white-space: nowrap;
+  min-width: 50px;
+  z-index: 12;
 }
-.cd-nugget-info a {
+
+.back-to-top span {
+  color: #FFF;
+  display: flex;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
   position: relative;
-  font-size: 14px;
-  color: #e86256;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  transition: all 0.2s;
+  text-transform: uppercase;
 }
-.cd-nugget-info a:hover {
-  opacity: .8;
+
+.back-to-top span+span {
+  margin-left: 20px;
 }
-.cd-nugget-info span {
-  vertical-align: middle;
-  display: inline-block;
+
+.icon-arrow-up {
+  background-color: #fff;
+  display: flex;
+  height: 14px;
+  width: 2px;
 }
-.cd-nugget-info span svg {
+
+.icon-arrow-up:before {
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  content: '';
   display: block;
+  height: 10px;
+  left: -4px;
+  position: absolute;
+  top: -1px;
+  transform: rotate(45deg);
+  width: 10px;
 }
-.cd-nugget-info .cd-nugget-info-arrow {
-  fill: #e86256;
+
+.back-to-top:hover {
+  background-color: #000;
+  opacity: 1;
+}
+
+.back-to-top:hover,
+.back-to-top:focus {
+  text-decoration: none;
+}
+
+.back-to-top.bttop--show,
+.back-to-top.bttop--fade-out,
+.back-to-top:hover {
+  transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+}
+
+.back-to-top.bttop--show {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+
+.sticky-back-to-top {
+  position: absolute;
+}
+
+.back-to-top.bttop--fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+
+@media only screen and (max-width: 768px) {
+  .back-to-top {
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .back-to-top span {
+    display: none;
+  }
+
+  .back-to-top span+span {
+    display: flex;
+    margin-left: 0 !important;
+  }
 }
