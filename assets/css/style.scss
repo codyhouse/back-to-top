@@ -1,0 +1,103 @@
+@import '../../../../codyhouse-framework/main/assets/css/_global.scss'; // ⚠️ make sure to import the CodyHouse framework
+@import url('https://fonts.googleapis.com/css?family=Bitter|Open+Sans:400,700'); // custom font
+
+// --------------------------------
+
+// Back To Top - by CodyHouse.co
+
+// --------------------------------
+
+:root {
+  // colors
+  @include defineColorHSL(--cd-color-1, 53, 29%, 95%); // Alabaster
+  @include defineColorHSL(--cd-color-2, 330, 13%, 42%); // Falcon
+  @include defineColorHSL(--cd-color-3, 5, 76%, 62%); // Burnt Sienna
+
+  // back-to-top 
+  --cd-back-to-top-size: 40px;
+  --cd-back-to-top-margin: 20px;
+  
+  // font
+  --font-primary: 'Bitter', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif; 
+}
+
+@supports(--css: variables) {
+  :root {
+    @include breakpoint(md) {
+      // back-to-top
+      --cd-back-to-top-size: 60px;
+      --cd-back-to-top-margin: 30px;
+    }
+  }
+}
+
+.cd-top {
+  position: fixed;
+  bottom: var(--cd-back-to-top-margin);
+  right: var(--cd-back-to-top-margin);
+  display: inline-block;
+  height: var(--cd-back-to-top-size);
+  width: var(--cd-back-to-top-size);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: url(../img/cd-top-arrow.svg) no-repeat center 50%;
+  background-color: alpha(var(--cd-color-3), 0.8);
+}
+
+.js {
+  .cd-top {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility .3s, background-color .3s;
+  }
+
+  .cd-top--is-visible { // back-to-top button visible
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .cd-top--fade-out { // reduce button opacity if user keeps scrolling
+    opacity: .5;
+  }
+
+  .cd-top:hover {
+    background-color: var(--cd-color-3);
+    opacity: 1;
+  }
+}
+
+//demo style
+body {
+  background-color: var(--cd-color-2);
+  @include fontSmooth;
+}
+
+.cd-main-header {
+  height: 180px;
+  background-color: lightness(var(--cd-color-2), 0.76);
+  color: var(--cd-color-1);
+  font-family: var(--font-secondary);
+  
+  h1 {
+    font-weight: bold;
+    color: inherit;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: lightness(var(--cd-color-2), 1.24);
+  }
+
+  a {
+    color: var(--cd-color-1);
+    font-family: var(--font-primary);
+  }
+
+  @include breakpoint(md) {
+    height: 280px;
+  }
+}
+
+.cd-main-content p {
+  color: var(--cd-color-1);
+}
